@@ -8,17 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class MainComponent implements OnInit {
 
-  
-  items; 
+
+  items;
   pageOfItems: Array < any > ;
-  loading=false;
-  constructor( private rest:RestService) { 
-     this.rest.getJSON().subscribe(data=>{
-       this.items=data['portfolio'];
-      this.loading=true;
-     console.log('items',this.items)
+  loading = false;
+  constructor( private rest: RestService) {
+     this.rest.getJSON().subscribe(data => {
+       this.items = data['portfolio'];
+       setTimeout(() => {
+        console.log('hide');
+        this.loading = true;
+      }, 3500);
     });
-    // (this.loading)?console.log('items',this.items):console.log('loading') 
+    // (this.loading)?console.log('items',this.items):console.log('loading')
    }
 
   ngOnInit() {
